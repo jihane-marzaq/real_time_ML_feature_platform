@@ -1,0 +1,71 @@
+
+
+o
+card_idHIdentifiant unique de la carte bancaire (card1 dans le dataset IEEE-CIS)"card_idJfraud_detection
+ˆ‹ıÓÁŠ‰ˆ‹ıÓÁŠ‰
+F
+&
+__dummy"
+__dummy_idJfraud_detection
+ˆ‹ıÓğşëˆˆ‹ıÓ€¨¢‰1"$e3ef6106-dc3b-4e4d-97ec-a27aa99aba67*ˆ‹ıÓ¨®ï®2ù
+Ø
+card_featuresfraud_detectioncard_id"
+transaction_hour"
+transaction_dow"
+transaction_amt"
+transaction_amt_log"
+card_avg_amt_7d"
+card_max_amt_7d"
+card_amt_ratio_vs_avg"
+card_prev_amt"
+card_txn_count_24h"
+card_txn_count_1h"
+card_total_amt_24h"
+seconds_since_last_txn"
+email_domain_changed"
+
+product_cd2€õ$:Ğevent_timestampbI
+Greal-time-ml-feature-platform.fraud_detection.feat_transaction_featuresŠ9feast.infra.offline_stores.bigquery_source.BigQuerySource¢card_features_source’ÿŠıÓè©»¥"ˆ‹ıÓ°„…‡@b
+card_id’latest
+ˆ‹ıÓ°¡¥‡ˆ‹ıÓ°¡¥‡:¢
+
+fraud_detection_v1fraud_detection¤
+card_features
+transaction_hour
+transaction_dow
+transaction_amt_log
+card_avg_amt_7d
+card_amt_ratio_vs_avg
+card_txn_count_24h
+card_txn_count_1h
+seconds_since_last_txn
+email_domain_changed
+card_total_amt_24hB”event_timestampbI
+Greal-time-ml-feature-platform.fraud_detection.feat_transaction_features¢card_features_source’ÿŠıÓè©»¥"ˆ‹ıÓ°„…‡ZfeatureView*3Features pour le modÃ¨le XGBoost fraud detection v1
+ˆ‹ıÓĞé»‰ˆ‹ıÓĞé»‰bâevent_timestampbI
+Greal-time-ml-feature-platform.fraud_detection.feat_transaction_featuresŠ9feast.infra.offline_stores.bigquery_source.BigQuerySource¢card_features_sourceªfraud_detection’ÿŠıÓè©»¥"ˆ‹ıÓ°„…‡Š1
+
+fraud_detection
+ÿŠıÓèÕÍ¨ÿŠıÓèÕÍ¨’á
+Ş
+card_featuresfraud_detection"feature_view*ù
+Ø
+card_featuresfraud_detectioncard_id"
+transaction_hour"
+transaction_dow"
+transaction_amt"
+transaction_amt_log"
+card_avg_amt_7d"
+card_max_amt_7d"
+card_amt_ratio_vs_avg"
+card_prev_amt"
+card_txn_count_24h"
+card_txn_count_1h"
+card_total_amt_24h"
+seconds_since_last_txn"
+email_domain_changed"
+
+product_cd2€õ$:Ğevent_timestampbI
+Greal-time-ml-feature-platform.fraud_detection.feat_transaction_featuresŠ9feast.infra.offline_stores.bigquery_source.BigQuerySource¢card_features_source’ÿŠıÓè©»¥"ˆ‹ıÓ°„…‡@b
+card_id’latest
+ˆ‹ıÓ°¡¥‡ˆ‹ıÓ°¡¥‡2ˆ‹ıÓ€ñàˆB$0b38a703-0e28-4803-84b4-a8be1f9c962b

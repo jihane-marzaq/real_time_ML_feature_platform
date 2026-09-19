@@ -1,0 +1,27 @@
+version: 2
+
+sources:
+  - name: fraud_detection
+    database: real-time-ml-feature-platform
+    schema: fraud_detection
+    tables:
+      - name: raw_transactions
+        description: "Transactions brutes ingérées depuis Kafka"
+        columns:
+          - name: TransactionID
+            tests:
+              - not_null
+
+models:
+  - name: stg_transactions
+    description: "Transactions nettoyées"
+    columns:
+      - name: transaction_id
+        tests: [not_null] # On retire 'unique' ici car le dédoublonnage se fait dans le SQL
+      - name: transaction_amt
+        tests: [not_null]
+      - name: is_fraud
+        tests:
+          - accepted_values:
+              values: ["0", "1"]
+              quote: false

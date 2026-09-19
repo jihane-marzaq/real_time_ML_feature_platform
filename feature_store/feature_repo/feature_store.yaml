@@ -1,0 +1,13 @@
+project: fraud_detection
+registry: registry.pb
+provider: gcp
+
+offline_store:
+  type: bigquery
+  dataset: fraud_detection
+
+online_store:
+  type: redis
+  connection_string: "localhost:6379"
+
+entity_key_serialization_version: 3

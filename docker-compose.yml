@@ -1,0 +1,61 @@
+# docker-compose.yml
+version: '3.8'
+
+services:
+
+
+  # ZooKeeper - gestionnaire de cluster Kafka
+  # Rôle : coordonne les brokers, gère les élections de leader
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.4.0
+    container_name: zookeeper
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    ports:
+      - "2181:2181"
+
+  # Kafka Broker - le cœur du système
+  kafka:
+    image: confluentinc/cp-kafka:7.4.0
+    container_name: kafka
+    depends_on:
+      - zookeeper
+    ports:
+      - "9092:9092"      # port pour les producers/consumers locaux
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      # PLAINTEXT_HOST = accessible depuis ta machine (localhost:9092)
+      # PLAINTEXT = accessible depuis les autres containers Docker
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:29092,PLAINTEXT_HOST://localhost:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      # Rétention : garde les messages 7 jours
+      KAFKA_LOG_RETENTION_HOURS: 168
+    
+  redis:
+      image: redis:7.2-alpine
+      container_name: redis
+      ports:
+        - "6379:6379"
+    # Persistance : Redis sauvegarde sur disque toutes les 60s
+      command: redis-server --save 60 1 --loglevel warning
+      volumes:
+        - redis_data:/data
+
+  # Kafka UI - interface visuelle pour voir les topics et messages
+  kafka-ui:
+    image: provectuslabs/kafka-ui:latest
+    container_name: kafka-ui
+    depends_on:
+      - kafka
+    ports:
+      - "8081:8080"
+    environment:
+      KAFKA_CLUSTERS_0_NAME: local
+      KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka:29092
+      
+volumes:
+  redis_data:

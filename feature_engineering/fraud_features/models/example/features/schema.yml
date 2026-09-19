@@ -1,0 +1,19 @@
+version: 2
+
+models:
+  - name: feat_card_aggregates
+    description: "Features agrégées par carte bancaire sur fenêtres temporelles"
+    columns:
+      - name: transaction_id
+        tests: [not_null]
+      - name: card_txn_count_24h
+        description: "Nombre de transactions dans les 24 dernières heures pour cette carte"
+        tests: [not_null]
+
+  - name: feat_transaction_features
+    description: "Table finale des features pour Feast — source unique de vérité"
+    columns:
+      - name: transaction_id
+        tests: [not_null, unique]
+      - name: event_timestamp
+        tests: [not_null]
